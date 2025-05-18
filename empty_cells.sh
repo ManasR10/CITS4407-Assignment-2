@@ -28,4 +28,4 @@ END {
         print header[i]": "counts[i]
     }
 }' "$file"
-```
+
