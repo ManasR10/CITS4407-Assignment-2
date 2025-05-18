@@ -27,11 +27,15 @@ read mech_col dom_col year_col rate_col comp_col < <(
 # 2. Most popular mechanics
 awk -v FS="\t" -v col="$mech_col" '
 NR>1{
-  n = split($col, arr, /, */);
+  field = $col;
+  gsub(/^"|"$/, "", field);       # remove leading/trailing quotes
+  n = split(field, arr, /, */);
   for(i=1;i<=n;i++) {
-    if(arr[i] == "" || arr[i] == "-") continue;
-    count[arr[i]]++;
-    if(count[arr[i]] > max) { max = count[arr[i]]; mech = arr[i]; }
+    val = arr[i];
+    gsub(/^"|"$/, "", val);       # remove quotes from each value (extra safety)
+    if(val == "" || val == "-") continue;
+    count[val]++;
+    if(count[val] > max) { max = count[val]; mech = val; }
   }
 }
 END{
@@ -41,11 +45,15 @@ END{
 # 3. Most popular domain
 awk -v FS="\t" -v col="$dom_col" '
 NR>1{
-  n = split($col, arr, /, */);
+  field = $col;
+  gsub(/^"|"$/, "", field);       # remove leading/trailing quotes
+  n = split(field, arr, /, */);
   for(i=1;i<=n;i++) {
-    if(arr[i] == "" || arr[i] == "-") continue;
-    count[arr[i]]++;
-    if(count[arr[i]] > max) { max = count[arr[i]]; dom = arr[i]; }
+    val = arr[i];
+    gsub(/^"|"$/, "", val);       # remove quotes from each value (extra safety)
+    if(val == "" || val == "-") continue;
+    count[val]++;
+    if(count[val] > max) { max = count[val]; dom = val; }
   }
 }
 END{
