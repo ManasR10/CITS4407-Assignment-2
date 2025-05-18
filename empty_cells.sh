@@ -1,31 +1,34 @@
-#!/usr/bin/env bash
-# empty_cells.sh: Count empty cells in each column of a delimited file
+#!/bin/bash
+# empty_cells.sh: Counts empty cells in each column of a delimited text file.
 # Usage: empty_cells.sh <input-file> <separator>
+# Example: ./empty_cells.sh sample.txt ";"
 
-if [ "$#" -ne 2 ]; then
-  echo "Usage: $0 <input-file> <separator>" >&2
-  exit 1
+# Check correct number of arguments
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <input-file> <separator>" >&2
+    exit 1
 fi
 
 file="$1"
 sep="$2"
 
-awk -v FS="$sep" 'NR==1 {
-    n = NF
+# Use awk to count empty fields in each column
+awk -v FS="$sep" '
+NR == 1 {
     for (i = 1; i <= NF; i++) {
-        header[i] = $i
-        counts[i] = 0
+        header[i] = $i;
+        count[i] = 0;
     }
     next
 }
 {
-    for (i = 1; i <= n; i++) {
-        if ($i == "") counts[i]++
+    for (i = 1; i <= NF; i++) {
+        if ($i == "") count[i]++;
     }
 }
 END {
-    for (i = 1; i <= n; i++) {
-        print header[i]": "counts[i]
+    for (i = 1; i <= length(header); i++) {
+        print header[i] ": " count[i];
     }
-}' "$file"
-
+}
+' "$file"
