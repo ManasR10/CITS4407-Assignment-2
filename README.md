@@ -81,10 +81,19 @@ Usage:
 Automates pipeline steps and testing.
 
 Usage:
-	•	Full pipeline: make all
-	•	Cleanup: make clean
+	•	Full pipeline: 
+        ```bash
+        make all
+        ```
+	•	Cleanup: 
+        ```bash
+        make clean
+        ```
 	•	Just the big dataset: make full && make analysis_full
-
+        ```bash
+        make full
+        make analysis_full
+        ```
 ---
 
 ## How to Run the Project
