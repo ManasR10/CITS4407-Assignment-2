@@ -36,9 +36,11 @@ All scripts use only Unix tools and follow best practices taught in CITS4407 lec
 
 ## Scripts and Their Roles
 
-1. empty_cells.sh
-	•	Purpose: Counts and reports the number of empty cells per column in a delimited text file.
-	•	Usage:
+1. **empty_cells.sh**
+   
+	•	**Purpose**: Counts and reports the number of empty cells per column in a delimited text file.
+
+	•	**Usage**:
 
 ```bash
 ./empty_cells.sh <input-file> <separator>
@@ -46,9 +48,10 @@ All scripts use only Unix tools and follow best practices taught in CITS4407 lec
 ./empty_cells.sh sample.txt ";"
 
 ```
-2. preprocess.sh
+2. **preprocess.sh**
 
-Cleans raw data:
+**Cleans raw data:**
+
 	•	Converts semicolons to tabs
 	•	Converts CRLF to LF
 	•	Fixes decimal commas to dots
@@ -56,44 +59,51 @@ Cleans raw data:
 	•	Fills missing IDs
 	•	Quotes “Mechanics” and “Domains” fields
 
-    Usage:
+    
+**Usage:**
 ```bash
 ./preprocess.sh <input-file> > <output-clean-file>
 # Example:
 ./preprocess.sh sample.txt > sample_clean.tsv
 ```
 
-3. analysis.sh
+3. **analysis.sh**
 
 Analyzes cleaned data to report:
-	•	Most popular mechanic and domain
-	•	Correlation between year/rating and complexity/rating
 
-Usage:
+	•	Most popular mechanic and domain
+	•	Correlation between year/rating and    complexity/rating 
+
+**Usage:**
 
 ```bash
 ./analysis.sh <clean-file>
 # Example:
 ./analysis.sh sample_clean.tsv
 ```
-4. Makefile
+4. **Makefile**
 
 Automates pipeline steps and testing.
 
-Usage:
-	•	Full pipeline: 
-        ```bash
-        make all
-        ```
-	•	Cleanup: 
-        ```bash
-        make clean
-        ```
-	•	Just the big dataset: make full && make analysis_full
-        ```bash
-        make full
-        make analysis_full
-        ```
+**Usage:**
+
+Full pipeline: 
+
+```bash
+make all
+```
+Cleanup: 
+
+```bash
+make clean
+```
+
+Just the big dataset: 
+
+```bash
+make full
+make analysis_full
+```
 ---
 
 ## How to Run the Project
@@ -126,5 +136,6 @@ The Makefile provides convenient targets to automate:
 ## Known Issues or Limitations
 
 	•	Assumes the header and column order match the assignment samples.
+
 	•	“Mechanics” and “Domains” columns are always quoted for robustness—this is intentional.
-	•	Large files (like bgg_dataset.txt) may take several seconds/minutes to process.    
+    
