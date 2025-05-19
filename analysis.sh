@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
-# analysis.sh: Analyze cleaned board game data for mechanics, domain, and correlations.
-# Usage: analysis.sh <cleaned-file>
+## analysis.sh: Examine the data from the cleaned game to spot mechanics, their respective domains and any connections between them.
+    # It inspects and prepares an input dataset for the board game analysis.
+	    # •	Find out which game mechanic and domain are most popular.
+	    # •	Find the correlation between movies based on their release year and the average rating they received
+	    # •	Compare how the complexity of a game is linked to its popular rating.
+
+    #T he data set includes summaries and correlations to reveal trends and players’ preferences in board games.
+## Usage: analysis.sh <cleaned-file>
 
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 <cleaned-file>" >&2
