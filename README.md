@@ -1,7 +1,7 @@
 # CITS4407-Assignment-2
 
 **Author:** Manas Rawat  
-**Unit:** CITS4407 Systems Programming  
+**Unit:** CITS4407 Open Source Tools and Scripting  
 **Semester:** 1, 2025  
 **UWA Student ID:** 24004729
 
@@ -11,11 +11,36 @@
 
 - [CITS4407-Assignment-2](#cits4407-assignment-2)
   - [Table of Contents](#table-of-contents)
+  - [File Structure](#file-structure)
   - [Project Overview](#project-overview)
   - [Scripts and Their Roles](#scripts-and-their-roles)
   - [How to Run the Project](#how-to-run-the-project)
   - [Testing and Automation with Makefile](#testing-and-automation-with-makefile)
   - [Known Issues or Limitations](#known-issues-or-limitations)
+
+---
+## File Structure
+
+        CITS4407-Assignment-2/
+        │
+        ├── .gitignore
+        ├── Makefile
+        ├── README.md
+        ├── analysis.sh
+        ├── empty_cells.sh
+        ├── preprocess.sh
+        │
+        ├── sampleFiles/
+        │   ├── bgg_dataset_clean.tsv
+        │   ├── bgg_dataset.txt
+        │   ├── sample_clean.tsv
+        │   ├── sample.txt
+        │   ├── sample1_clean.tsv
+        │   ├── sample1.txt
+        │   ├── tiny_sample_clean.tsv
+        │   ├── tiny_sample.txt
+        │   ├── tiny_sample.xlsx
+        │
 
 ---
 
@@ -81,6 +106,7 @@ Analyzes cleaned data to report:
 # Example:
 ./analysis.sh sample_clean.tsv
 ```
+
 4. **Makefile**
 
 Automates pipeline steps and testing.
@@ -124,6 +150,7 @@ make all
 ```bash
 make clean
 ```
+---
 
 ## Testing and Automation with Makefile
 
@@ -133,9 +160,12 @@ The Makefile provides convenient targets to automate:
 	•	Full analysis for each dataset
 	•	Cleanup
 
+---
+
 ## Known Issues or Limitations
 
 	•	Assumes the header and column order match the assignment samples.
 
 	•	“Mechanics” and “Domains” columns are always quoted for robustness—this is intentional.
     
+---    
