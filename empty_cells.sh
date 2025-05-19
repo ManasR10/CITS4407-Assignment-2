@@ -1,5 +1,8 @@
 #!/bin/bash
-# empty_cells.sh: Counts empty cells in each column of a delimited text file.
+# empty_cells.sh: It measures and lists the count of empty (blank) cells in each column of a delimited text file.
+# You indicate the name of the input file and also choose the character to separate the data (; for CSV and \t for TSV).
+# The report gives a simple table listing every column, along with the number of empty cells.
+
 # Usage: empty_cells.sh <input-file> <separator>
 # Example: ./empty_cells.sh sample.txt ";"
 
