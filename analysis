@@ -8,8 +8,30 @@
     # The data set includes summaries and correlations to reveal trends and players’ preferences in board games.
 ## Usage: ./analysis <cleaned-file>
 
+# Error handling: Argument, file existence, readability, empty file, format checks
+
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 <cleaned-file>" >&2
+  exit 1
+fi
+
+file="$1"
+
+# Check file exists
+if [ ! -e "$file" ]; then
+  echo "Error: File '$file' does not exist." >&2
+  exit 1
+fi
+
+# Check file is readable
+if [ ! -r "$file" ]; then
+  echo "Error: File '$file' is not readable." >&2
+  exit 1
+fi
+
+# Check file is not empty
+if [ ! -s "$file" ]; then
+  echo "Error: File '$file' is empty." >&2
   exit 1
 fi
 

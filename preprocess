@@ -12,12 +12,33 @@
 ## Usage: ./preprocess <input-file>
 ## Output: Cleaned, tab-separated file to standard output with quoted Mechanics/Domains
 
+# Error handling: argument count, input file existence, readability, and emptiness
+
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 <input-file>" >&2
   exit 1
 fi
 
 input="$1"
+
+# Check input file existence
+if [ ! -e "$input" ]; then
+  echo "Error: Input file '$input' does not exist." >&2
+  exit 1
+fi
+
+# Check input file readability
+if [ ! -r "$input" ]; then
+  echo "Error: Input file '$input' is not readable." >&2
+  exit 1
+fi
+
+# Check input file is not empty
+if [ ! -s "$input" ]; then
+  echo "Error: Input file '$input' is empty." >&2
+  exit 1
+fi
+
 
 # Temporary files
 tmp1=$(mktemp)

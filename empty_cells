@@ -6,7 +6,8 @@
 # Usage: empty_cells <input-file> <separator>
 # Example: ./empty_cells sample.txt ";"
 
-# Check correct number of arguments
+# Error handling: check file existence, readability, and not empty
+
 if [ $# -ne 2 ]; then
     echo "Usage: $0 <input-file> <separator>" >&2
     exit 1
@@ -14,6 +15,25 @@ fi
 
 file="$1"
 sep="$2"
+
+# Check if file exists
+if [ ! -e "$file" ]; then
+    echo "Error: File '$file' does not exist." >&2
+    exit 1
+fi
+
+# Check if file is readable
+if [ ! -r "$file" ]; then
+    echo "Error: File '$file' is not readable." >&2
+    exit 1
+fi
+
+# Check if file is not empty
+if [ ! -s "$file" ]; then
+    echo "Error: File '$file' is empty." >&2
+    exit 1
+fi
+
 
 # Use awk to count empty fields in each column
 awk -v FS="$sep" '
