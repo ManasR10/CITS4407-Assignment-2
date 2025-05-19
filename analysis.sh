@@ -38,7 +38,7 @@ NR>1{
   n = split(field, arr, /, */);
   for(i=1;i<=n;i++) {
     val = arr[i];
-    gsub(/^"|"$/, "", val);       # remove quotes from each value (extra safety)
+    gsub(/^"|"$/, "", val);       # remove quotes from each value 
     if(val == "" || val == "-") continue;
     count[val]++;
     if(count[val] > max) { max = count[val]; mech = val; }
@@ -56,7 +56,7 @@ NR>1{
   n = split(field, arr, /, */);
   for(i=1;i<=n;i++) {
     val = arr[i];
-    gsub(/^"|"$/, "", val);       # remove quotes from each value (extra safety)
+    gsub(/^"|"$/, "", val);       # remove quotes from each value 
     if(val == "" || val == "-") continue;
     count[val]++;
     if(count[val] > max) { max = count[val]; dom = val; }
