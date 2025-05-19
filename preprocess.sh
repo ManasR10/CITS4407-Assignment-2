@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
-# preprocess.sh: Clean and normalize a semicolon-delimited boardgame dataset
-# Usage: preprocess.sh <input-file>
-# Output: Cleaned, tab-separated file to standard output with quoted Mechanics/Domains
+## preprocess.sh: Clean and organize a dataset of board games using semicolons.
+# It takes an input of board game info in semicolon format and makes it ready for analysis.
+	# •	Including tabs instead of commas
+	# •	Converting the line endings to the Unix format
+	# •	Putting the decimal place over the dot instead of the comma
+	# •	Deleting symbols other than the standard ones
+	# •	Giving a unique value to every cell that does not have an ID
+	# •	Adding key fields to cover delimiters that are inside the input.
+
+# It produces a file with tabs delimiting the columns, making it easy for machines to process.
+## Usage: preprocess.sh <input-file>
+## Output: Cleaned, tab-separated file to standard output with quoted Mechanics/Domains
 
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 <input-file>" >&2
@@ -14,22 +23,22 @@ input="$1"
 tmp1=$(mktemp)
 tmp2=$(mktemp)
 
-# Step 1: Convert Windows (CRLF) line endings to Unix (LF)
+#  Convert Windows (CRLF) line endings to Unix (LF)
 tr -d '\r' < "$input" > "$tmp1"
 
-# Step 2: Convert semicolons to tabs
+#  Convert semicolons to tabs
 tr ';' '\t' < "$tmp1" > "$tmp2"
 
-# Step 3: Replace decimal commas with dots (e.g., 8,79 -> 8.79)
+#  Replace decimal commas with dots (e.g., 8,79 -> 8.79)
 sed -E 's/([0-9]),([0-9]+)/\1.\2/g' "$tmp2" > "$tmp1"
 
-# Step 4: Remove non-ASCII characters (keep printable ASCII, tabs, newlines)
+#  Remove non-ASCII characters (keep printable ASCII, tabs, newlines)
 tr -cd '\11\12\15\40-\176' < "$tmp1" > "$tmp2"
 
-# Step 5: Find max ID in first column (skip header)
+#  Find max ID in first column (skip header)
 maxid=$(awk -F'\t' 'NR>1 && $1 ~ /^[0-9]+$/ { if ($1>m) m=$1 } END { print m+0 }' "$tmp2")
 
-# Step 6: Quote both Mechanics and Domains fields, fill IDs
+#  Quote both Mechanics and Domains fields, fill IDs
 awk -F'\t' -v OFS='\t' -v maxid="$maxid" '
 NR==1 {
     mech_col = dom_col = 0
