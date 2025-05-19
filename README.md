@@ -26,9 +26,9 @@
         ├── .gitignore
         ├── Makefile
         ├── README.md
-        ├── analysis.sh
-        ├── empty_cells.sh
-        ├── preprocess.sh
+        ├── analysis
+        ├── empty_cells
+        ├── preprocess
         │
         ├── sampleFiles/
         │   ├── bgg_dataset_clean.tsv
@@ -46,14 +46,15 @@
 
 ## Project Overview
 
-This submission solves the "Board Games or Bored Games" assignment using the BoardGameGeek dataset from Kaggle.  
-It features a shell-based data processing and analytics pipeline for:
+The data used in this submission is the BoardGameGeek dataset from Kaggle to resolve the assignment “Board Games or Bored Games.”  
+There is a shell-based way to process and analyze data in the pipeline.
 
-- Data quality checking (`empty_cells.sh`)
-- Data cleaning and normalization (`preprocess.sh`)
-- Automated analytics (popularity/correlation via `analysis.sh`)
 
-All scripts use only Unix tools and follow best practices taught in CITS4407 lectures.
+- Data quality checking (`empty_cells`)
+- Data cleaning and normalization (`preprocess`)
+- Automated analytics (popularity/correlation via `analysis`)
+
+
 
 ---
 
@@ -61,19 +62,19 @@ All scripts use only Unix tools and follow best practices taught in CITS4407 lec
 
 ## Scripts and Their Roles
 
-1. **empty_cells.sh**
+1. **empty_cells**
    
 	•	**Purpose**: Counts and reports the number of empty cells per column in a delimited text file.
 
 	•	**Usage**:
 
 ```bash
-./empty_cells.sh <input-file> <separator>
+./empty_cells <input-file> <separator>
 # Example:
-./empty_cells.sh sample.txt ";"
+./empty_cells sample.txt ";"
 
 ```
-2. **preprocess.sh**
+2. **preprocess**
 
 **Cleans raw data:**
 
@@ -87,12 +88,12 @@ All scripts use only Unix tools and follow best practices taught in CITS4407 lec
     
 **Usage:**
 ```bash
-./preprocess.sh <input-file> > <output-clean-file>
+./preprocess <input-file> > <output-clean-file>
 # Example:
-./preprocess.sh sample.txt > sample_clean.tsv
+./preprocess sample.txt > sample_clean.tsv
 ```
 
-3. **analysis.sh**
+3. **analysis**
 
 Analyzes cleaned data to report:
 
@@ -102,9 +103,9 @@ Analyzes cleaned data to report:
 **Usage:**
 
 ```bash
-./analysis.sh <clean-file>
+./analysis <clean-file>
 # Example:
-./analysis.sh sample_clean.tsv
+./analysis sample_clean.tsv
 ```
 
 4. **Makefile**
