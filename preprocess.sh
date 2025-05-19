@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 ## preprocess.sh: Clean and organize a dataset of board games using semicolons.
-# It takes an input of board game info in semicolon format and makes it ready for analysis.
-	# •	Including tabs instead of commas
-	# •	Converting the line endings to the Unix format
-	# •	Putting the decimal place over the dot instead of the comma
-	# •	Deleting symbols other than the standard ones
-	# •	Giving a unique value to every cell that does not have an ID
-	# •	Adding key fields to cover delimiters that are inside the input.
+    # It takes an input of board game info in semicolon format and makes it ready for analysis.
+        # •	Including tabs instead of commas
+        # •	Converting the line endings to the Unix format
+        # •	Putting the decimal place over the dot instead of the comma
+        # •	Deleting symbols other than the standard ones
+        # •	Giving a unique value to every cell that does not have an ID
+        # •	Adding key fields to cover delimiters that are inside the input.
 
-# It produces a file with tabs delimiting the columns, making it easy for machines to process.
+    # It produces a file with tabs delimiting the columns, making it easy for machines to process.
 ## Usage: preprocess.sh <input-file>
 ## Output: Cleaned, tab-separated file to standard output with quoted Mechanics/Domains
 
@@ -21,7 +21,7 @@ input="$1"
 
 # Temporary files
 tmp1=$(mktemp)
-tmp2=$(mktemp)
+t   mp2=$(mktemp)
 
 #  Convert Windows (CRLF) line endings to Unix (LF)
 tr -d '\r' < "$input" > "$tmp1"

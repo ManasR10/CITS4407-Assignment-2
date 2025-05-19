@@ -5,7 +5,7 @@
 	    # •	Find the correlation between movies based on their release year and the average rating they received
 	    # •	Compare how the complexity of a game is linked to its popular rating.
 
-    #T he data set includes summaries and correlations to reveal trends and players’ preferences in board games.
+    # The data set includes summaries and correlations to reveal trends and players’ preferences in board games.
 ## Usage: analysis.sh <cleaned-file>
 
 if [ "$#" -ne 1 ]; then

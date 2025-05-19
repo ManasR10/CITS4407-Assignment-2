@@ -118,6 +118,7 @@ make clean
 ## Testing and Automation with Makefile
 
 The Makefile provides convenient targets to automate:
+
 	•	Data cleaning for all sample/test files
 	•	Full analysis for each dataset
 	•	Cleanup
